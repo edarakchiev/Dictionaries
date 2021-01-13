@@ -1,0 +1,22 @@
+product = {}
+
+while True:
+    command = input()
+    if command == "statistics":
+        break
+    data = command.split(":")
+    for index in range(0, len(data), 2):
+        key = data[index]
+        value = int(data[index + 1])
+        if key in product:
+            product[key] += value
+        else:
+            product[key] = value
+
+print("Products in stock:")
+for key, value in product.items():
+    print(f"- {key}: {value}")
+total_products = len(product)
+total_quantity = sum(product.values())
+print(f"Total Products: {total_products}")
+print(f"Total Quantity: {total_quantity}")
