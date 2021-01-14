@@ -1,0 +1,19 @@
+company = {}
+
+while True:
+    data = input()
+    if data == "End":
+        break
+    key, value = data.split(" -> ")
+    if key not in company:
+        company[key] = []
+    if value in company[key]:
+        continue
+    company[key].append(value)
+
+sorted_company = dict(sorted(company.items(), key=lambda x: x[0]))
+
+for key,value in sorted_company.items():
+    print(key)
+    for el in value:
+        print(f"-- {el}")
