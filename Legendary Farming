@@ -1,0 +1,41 @@
+materials = {"shards": 0, "fragments": 0, "motes": 0}
+junk = {}
+status = True
+while status:
+    data = input().split()
+    for index in range(0, len(data), 2):
+        key = data[index + 1].lower()
+        value = int(data[index])
+        if key == "shards":
+            materials["shards"] += value
+            if materials["shards"] >= 250:
+                materials["shards"] -= 250
+                print("Shadowmourne obtained!")
+                status = False
+                break
+        elif key == "fragments":
+            materials["fragments"] += value
+            if materials["fragments"] >= 250:
+                materials["fragments"] -= 250
+                print("Valanyr obtained!")
+                status = False
+                break
+        elif key == "motes":
+            materials["motes"] += value
+            if materials["motes"] >= 250:
+                materials["motes"] -= 250
+                print("Dragonwrath obtained!")
+                status = False
+                break
+        else:
+            if key not in junk:
+                junk[key] = 0
+
+            junk[key] += value
+
+sorted_materials = dict(sorted(materials.items(), key=lambda x: (-x[1], x[0])))
+for key, value in sorted_materials.items():
+    print(f"{key}: {value}")
+
+for key, value in sorted(junk.items()):
+    print(f"{key}: {value}")
