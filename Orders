@@ -1,0 +1,23 @@
+product_dict = {}
+
+while True:
+    data = input()
+    if data == "buy":
+        break
+    data = data.split()
+    name = data[0]
+    price = float(data[1])
+    quantity = int(data[2])
+    if name not in product_dict:
+        product_dict[name] = {'quantity': 0, 'price': 0}
+    product_dict[name]['quantity'] += quantity
+    product_dict[name]['price'] = price
+
+final_dict = {}
+for key in product_dict:
+    total_price = product_dict[key]['quantity'] * product_dict[key]['price']
+    final_dict[key] = total_price
+
+
+for key, value in final_dict.items():
+    print(f"{key} -> {value:.2f}")
