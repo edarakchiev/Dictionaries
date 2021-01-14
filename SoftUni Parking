@@ -1,0 +1,25 @@
+n = int(input())
+
+parking = {}
+
+for _ in range(n):
+    data = input().split()
+    command = data[0]
+    name = data[1]
+    if command == "register":
+        if name in parking:
+            print(f"ERROR: already registered with plate number {parking[name]}")
+        else:
+            certificate = data[2]
+            parking[name] = certificate
+            print(f"{name} registered {certificate} successfully")
+    elif command == "unregister":
+        if name not in parking:
+            print(f"ERROR: user {name} not found")
+        else:
+            print(f"{name} unregistered successfully")
+            parking.pop(name)
+
+
+for key,value in parking.items():
+    print(f"{key} => {value}")
