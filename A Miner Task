@@ -1,0 +1,13 @@
+resource = {}
+
+while True:
+    key = input()
+    if key == "stop":
+        break
+    value = int(input())
+    if key not in resource:
+        resource[key] = 0
+    resource[key] += value
+
+for key, value in resource.items():
+    print(f"{key} -> {value}")
